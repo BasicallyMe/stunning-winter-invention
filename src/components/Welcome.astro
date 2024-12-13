@@ -11,26 +11,28 @@ import demoVideo from "./../assets/demo-video.webm";
 <div id="container">
   <nav
     id="navigation-bar"
-    class="fixed py-5 px-3 z-50 flex justify-between items-center w-full"
+    class="fixed py-5 px-3 z-50 flex justify-center sm:justify-between items-center w-full"
   >
     <div class="flex items-center gap-3">
       <img src={logo.src} width="30" height="100%" />
       <img src={logoText.src} width="70" height="100%" />
     </div>
   </nav>
-  <main class="bg-brand_primary h-dvh flex relative overflow-hidden">
+  <main
+    class="bg-brand_primary h-dvh flex flex-col sm:flex-row relative overflow-hidden"
+  >
     <div class="flex-1 flex items-center justify-end">
-      <div class="h-full w-full flex items-center">
-        <img
-          src={heroImageLeft.src}
-          width="100%"
-          height="100%"
-          class="w-full h-full object-cover"
-        />
-      </div>
+      <img
+        src={heroImageLeft.src}
+        width="100%"
+        height="100%"
+        class="w-full h-full object-cover"
+      />
     </div>
-    <div class="flex-1 flex flex-col justify-center px-3 text-brand_white">
-      <h2 class="text-6xl font-extrabold mb-3">
+    <div
+      class="flex-1 flex flex-col items-center sm:items-start justify-center px-3 text-brand_white"
+    >
+      <h2 class="sm:text-6xl text-4xl font-extrabold mb-3">
         Live Shopping <br />{`& Marketplace`}
       </h2>
       <p class="mb-2">{`Buy, sell & discover products you'll love.`}</p>
@@ -40,7 +42,9 @@ import demoVideo from "./../assets/demo-video.webm";
       >
     </div>
 
-    <div class="w-1/2 h-full absolute pointer-events-none z-10 -right-28">
+    <div
+      class="w-1/2 h-full hidden sm:block absolute pointer-events-none z-10 -right-28"
+    >
       <img
         src={heroImageMain.src}
         width="100%"
@@ -61,8 +65,10 @@ import demoVideo from "./../assets/demo-video.webm";
     <div
       class="flex flex-col justify-center items-center px-3 z-10 text-brand_white"
     >
-      <h2 class="text-6xl font-extrabold mb-3">{`Watch Live Shows`}</h2>
-      <p class="mb-3">
+      <h2 class="text-4xl sm:text-6xl font-extrabold mb-3">
+        {`Watch Live Shows`}
+      </h2>
+      <p class="mb-3 text-center">
         {
           `Hang out with like-minded people in your community and discover new products`
         }
@@ -74,23 +80,25 @@ import demoVideo from "./../assets/demo-video.webm";
     </div>
   </section>
   <section
-    class="bg-brand_secondary h-dvh flex relative overflow-hidden text-brand_white"
+    class="bg-brand_secondary h-dvh flex flex-col sm:flex-row relative overflow-hidden text-brand_white"
   >
     <div class="flex-1 flex items-center justify-center">
-      <div class="h-full flex items-center w-full">
-        <img
-          src={secondHeroLeft.src}
-          width="100%"
-          height="100%"
-          class="w-full h-full object-contain"
-        />
-      </div>
+      <img
+        src={secondHeroLeft.src}
+        width="100%"
+        height="100%"
+        class="w-full h-full object-contain"
+      />
     </div>
-    <div class="flex-1 flex flex-col justify-center px-3">
-      <h2 class="text-6xl font-extrabold mb-3">
+    <div
+      class="flex-1 flex flex-col items-center sm:items-start justify-center px-3"
+    >
+      <h2
+        class="text-4xl sm:text-6xl sm:text-left text-center font-extrabold mb-3"
+      >
         {`Find Products You Want`}
       </h2>
-      <p class="mb-4">
+      <p class="mb-4 sm:text-left text-center">
         {`Search our marketplace to find the exact product you're looking for`}
       </p>
       <button
@@ -99,45 +107,43 @@ import demoVideo from "./../assets/demo-video.webm";
       >
     </div>
   </section>
-  <section class="bg-brand_white h-dvh flex relative overflow-hidden">
-    <div class="flex-1 flex items-center justify-center">
-      <div class="h-full flex items-center w-full relative">
-        <img
-          src={thirdHeroLeft.src}
-          width="100%"
-          height="100%"
-          class="w-full h-full object-contain z-10"
-        />
-        <svg
-          width="208"
-          height="208"
-          viewBox="0 0 208 208"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="absolute h-40 w-40 left-1/2 translate-x-6 -translate-y-20"
-        >
-          <path
-            d="M88.6727 18.2848C96.6661 8.749 111.334 8.749 119.327 18.2848L122.967 22.6264C127.561 28.1078 134.734 30.7182 141.777 29.4727L147.355 28.4862C159.608 26.3194 170.844 35.7476 170.838 48.1906L170.835 53.8557C170.832 61.0081 174.648 67.618 180.844 71.1912L185.751 74.0213C196.53 80.2374 199.077 94.6823 191.075 104.21L187.431 108.548C182.831 114.025 181.505 121.541 183.955 128.261L185.895 133.584C190.157 145.274 182.823 157.977 170.568 160.131L164.988 161.112C157.944 162.351 152.097 167.257 149.654 173.979L147.719 179.304C143.469 190.998 129.686 196.015 118.913 189.788L114.009 186.953C107.816 183.374 100.184 183.374 93.9914 186.953L89.0866 189.788C78.3138 196.015 64.5307 190.998 60.2807 179.304L58.3458 173.979C55.9029 167.257 50.0561 162.351 43.0117 161.112L37.4321 160.131C25.1771 157.977 17.8433 145.274 22.1049 133.584L24.0451 128.261C26.4947 121.541 25.1694 114.025 20.5691 108.548L16.9255 104.21C8.92257 94.6823 11.4696 80.2374 22.2486 74.0213L27.1562 71.1912C33.3521 67.618 37.1684 61.0081 37.1648 53.8557L37.162 48.1906C37.1558 35.7476 48.3919 26.3194 60.6447 28.4862L66.2233 29.4727C73.2665 30.7182 80.4386 28.1078 85.0334 22.6264L88.6727 18.2848Z"
-            fill="#3D52A0" class="animate-spin-slow origin-center"></path>
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M153.207 70.809C155.597 73.2211 155.597 77.1318 153.207 79.5439L96.0875 137.191C93.6975 139.603 89.8225 139.603 87.4325 137.191L54.7925 104.25C52.4025 101.838 52.4025 97.927 54.7925 95.5149C57.1825 93.1029 61.0575 93.1029 63.4475 95.5149L91.76 124.089L144.553 70.809C146.943 68.397 150.817 68.397 153.207 70.809Z"
-            fill="white"></path>
-        </svg>
-      </div>
+  <section class="bg-brand_white h-dvh flex sm:flex-row flex-col relative overflow-hidden">
+    <div class="flex-1 flex items-center justify-center relative">
+      <img
+        src={thirdHeroLeft.src}
+        width="100%"
+        height="100%"
+        class="w-full h-full object-contain z-10"
+      />
+      <svg
+        width="208"
+        height="208"
+        viewBox="0 0 208 208"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="absolute h-36 w-36 left-1/2 translate-x-6 -translate-y-20"
+      >
+        <path
+          d="M88.6727 18.2848C96.6661 8.749 111.334 8.749 119.327 18.2848L122.967 22.6264C127.561 28.1078 134.734 30.7182 141.777 29.4727L147.355 28.4862C159.608 26.3194 170.844 35.7476 170.838 48.1906L170.835 53.8557C170.832 61.0081 174.648 67.618 180.844 71.1912L185.751 74.0213C196.53 80.2374 199.077 94.6823 191.075 104.21L187.431 108.548C182.831 114.025 181.505 121.541 183.955 128.261L185.895 133.584C190.157 145.274 182.823 157.977 170.568 160.131L164.988 161.112C157.944 162.351 152.097 167.257 149.654 173.979L147.719 179.304C143.469 190.998 129.686 196.015 118.913 189.788L114.009 186.953C107.816 183.374 100.184 183.374 93.9914 186.953L89.0866 189.788C78.3138 196.015 64.5307 190.998 60.2807 179.304L58.3458 173.979C55.9029 167.257 50.0561 162.351 43.0117 161.112L37.4321 160.131C25.1771 157.977 17.8433 145.274 22.1049 133.584L24.0451 128.261C26.4947 121.541 25.1694 114.025 20.5691 108.548L16.9255 104.21C8.92257 94.6823 11.4696 80.2374 22.2486 74.0213L27.1562 71.1912C33.3521 67.618 37.1684 61.0081 37.1648 53.8557L37.162 48.1906C37.1558 35.7476 48.3919 26.3194 60.6447 28.4862L66.2233 29.4727C73.2665 30.7182 80.4386 28.1078 85.0334 22.6264L88.6727 18.2848Z"
+          fill="#3D52A0"
+          class="animate-spin-slow origin-center"></path>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M153.207 70.809C155.597 73.2211 155.597 77.1318 153.207 79.5439L96.0875 137.191C93.6975 139.603 89.8225 139.603 87.4325 137.191L54.7925 104.25C52.4025 101.838 52.4025 97.927 54.7925 95.5149C57.1825 93.1029 61.0575 93.1029 63.4475 95.5149L91.76 124.089L144.553 70.809C146.943 68.397 150.817 68.397 153.207 70.809Z"
+          fill="white"></path>
+      </svg>
     </div>
-    <div class="flex-1 flex flex-col justify-center px-3">
-      <h2 class="text-6xl font-extrabold mb-3">
+    <div class="flex-1 flex flex-col items-center sm:items-start justify-center px-3">
+      <h2 class="text-4xl sm:text-6xl sm:text-left text-center font-extrabold mb-3">
         {`Easy checkouts & secure payments`}
       </h2>
-      <p class="mb-4">
+      <p class="mb-4 sm:text-left text-center">
         {
           `Quick & easy checkouts so your orders gets delivered without any hassle.`
         }
       </p>
-      <form action="">
-        <div class="flex gap-3">
+      <form action="" class="flex flex-col sm:flex-row mb-10 gap-3">
           <input
             type="email"
             name="email"
@@ -147,20 +153,18 @@ import demoVideo from "./../assets/demo-video.webm";
           />
           <button
             type="submit"
-            class="bg-brand_primary text-white py-2 px-4 rounded-full text-sm w-28"
-            >Join</button
-          >
-        </div>
+            class="bg-brand_primary text-white py-2 px-4 rounded-full text-sm w-full sm:w-28"
+            >Join</button>
       </form>
     </div>
   </section>
-  <footer class="bg-black py-10 px-3 flex justify-between text-brand_white">
+  <footer class="bg-black py-10 px-3 flex sm:flex-row flex-col justify-between sm:gap-0 gap-10 text-brand_white">
     <div class="flex flex-col justify-between">
       <img src={logoText.src} width="100" height="60" class="mb-5" />
       <p class="text-xs">© 2024 Overdo. All rights reserved</p>
     </div>
     <div class="text-brand_white text-xs">
-      <ul class="flex flex-col gap-2">
+      <ul class="flex flex-col gap-4 sm:gap-2">
         <li>About</li>
         <li><a href="#">Contact us</a></li>
       </ul>
