@@ -6,9 +6,18 @@ import heroImageLeft from "../assets/main-hero-left.png";
 import secondHeroLeft from "../assets/second-hero-left.png";
 import thirdHeroLeft from "../assets/third-hero-left.png";
 import demoVideo from "./../assets/demo-video.webm";
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    console.log("something");
+  } catch (err) {
+    console.log(err);
+  }
+}
 ---
 
-<div id="container">
+<div id="container" class="scroll-smooth">
   <nav
     id="navigation-bar"
     class="fixed py-5 px-3 z-50 flex justify-center sm:justify-between items-center w-full"
@@ -19,7 +28,7 @@ import demoVideo from "./../assets/demo-video.webm";
     </div>
   </nav>
   <main
-    class="bg-brand_primary h-dvh flex flex-col sm:flex-row relative overflow-hidden"
+    class="bg-brand_primary h-dvh flex flex-col sm:flex-row relative overflow-hidden  selection:bg-brand_white selection:text-brand_primary"
   >
     <div class="flex-1 flex items-center justify-end">
       <img
@@ -36,13 +45,13 @@ import demoVideo from "./../assets/demo-video.webm";
         Live Shopping <br />{`& Marketplace`}
       </h2>
       <p class="mb-2">{`Buy, sell & find products you'll love.`}</p>
-      <button
+      <a href="#waitlist-section"
         class="bg-brand_white text-brand_primary py-2 px-4 rounded-full w-fit"
-        >Join the waitlist</button
+        >Join the waitlist</a
       >
     </div>
   </main>
-  <section class="bg-brand_primary h-dvh flex justify-center relative">
+  <section class="bg-brand_primary h-dvh flex justify-center relative  selection:bg-brand_white selection:text-brand_primary">
     <video
       class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none z-0"
       autoplay="true"
@@ -62,14 +71,14 @@ import demoVideo from "./../assets/demo-video.webm";
           `Hang out with like-minded people in your community and discover new products`
         }
       </p>
-      <button
+      <a href="#waitlist-section"
         class="bg-brand_white text-brand_primary py-2 px-4 rounded-full w-fit"
-        >Join the waitlist</button
+        >Join the waitlist</a
       >
     </div>
   </section>
   <section
-    class="bg-brand_secondary h-dvh flex flex-col sm:flex-row relative overflow-hidden text-brand_white"
+    class="bg-brand_secondary h-dvh flex flex-col sm:flex-row relative overflow-hidden text-brand_white  selection:bg-brand_white selection:text-brand_secondary"
   >
     <div class="flex-1 flex items-center justify-center">
       <img
@@ -90,13 +99,16 @@ import demoVideo from "./../assets/demo-video.webm";
       <p class="mb-4 sm:text-left text-center">
         {`Search our marketplace to find the exact product you're looking for`}
       </p>
-      <button
-        class="bg-brand_primary text-brand_white py-2 px-4 rounded-full w-fit"
-        >Join the waitlist</button
+      <a href="#waitlist-section"
+        class="bg-brand_white text-brand_primary py-2 px-4 rounded-full w-fit"
+        >Join the waitlist</a
       >
     </div>
   </section>
-  <section class="bg-brand_white h-dvh flex sm:flex-row flex-col relative overflow-hidden">
+  <section
+  id="waitlist-section"
+    class="bg-brand_white h-dvh min-h-dvh flex sm:flex-row flex-col relative overflow-hidden  selection:bg-black selection:text-brand_white"
+  >
     <div class="flex-1 flex items-center justify-center relative">
       <img
         src={thirdHeroLeft.src}
@@ -123,8 +135,12 @@ import demoVideo from "./../assets/demo-video.webm";
           fill="white"></path>
       </svg>
     </div>
-    <div class="flex-1 flex flex-col items-center sm:items-start justify-center px-3">
-      <h2 class="text-4xl sm:text-6xl sm:text-left text-center font-extrabold mb-3">
+    <div
+      class="flex-1 flex flex-col items-center sm:items-start justify-center px-3"
+    >
+      <h2
+        class="text-4xl sm:text-6xl sm:text-left text-center font-extrabold mb-3"
+      >
         {`Easy checkouts & secure payments`}
       </h2>
       <p class="mb-4 sm:text-left text-center">
@@ -132,22 +148,40 @@ import demoVideo from "./../assets/demo-video.webm";
           `Quick & easy checkouts so your orders gets delivered without any hassle.`
         }
       </p>
-      <form action="" class="flex flex-col sm:flex-row mb-10 gap-3">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Type your email"
-            class="outline-none rounded-full py-2 px-2 text-sm w-72"
-          />
-          <button
-            type="submit"
-            class="bg-brand_primary text-white py-2 px-4 rounded-full text-sm w-full sm:w-28"
-            >Join</button>
+      <form
+        id="email-form"
+        method="POST"
+        action="https://api.web3forms.com/submit"
+        data-astro-reload
+        novalidate
+        class="flex flex-col sm:flex-row gap-3 mb-1"
+      >
+        <input
+          type="hidden"
+          name="access_key"
+          value="c27f4d38-ffe7-44c0-aca0-d1e4ed785ff3"
+        />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          placeholder="Type your email"
+          class="outline-none rounded-full py-2 px-2 text-sm w-72"
+        />
+        <button
+          id="submit-button"
+          type="submit"
+          class="bg-brand_primary text-white py-2 px-4 rounded-full text-sm w-full sm:w-28 transition-colors"
+          >Join</button
+        >
       </form>
+      <p id="result" class="text-xs text-red-500"></p>
     </div>
   </section>
-  <footer class="bg-black py-10 px-3 flex sm:flex-row flex-col justify-between sm:gap-0 gap-10 text-brand_white">
+  <footer
+    class=" bg-black py-10 px-3 flex sm:flex-row flex-col justify-between sm:gap-0 gap-10 text-brand_white"
+  >
     <div class="flex flex-col justify-between">
       <img src={logoText.src} width="100" height="60" class="mb-5" />
       <p class="text-xs">© 2024 Overdo. All rights reserved</p>
@@ -162,3 +196,48 @@ import demoVideo from "./../assets/demo-video.webm";
 </div>
 
 <style></style>
+
+<script is:inline>
+  const form = document.getElementById("email-form");
+  const submitBtn = document.getElementById("submit-button");
+  const result = document.getElementById("result");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const formObject = Object.fromEntries(formData);
+    const jsonData = JSON.stringify(formObject);
+    submitBtn.classList.add("bg-brand_gray_light");
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: jsonData,
+    }).then(async (response) => {
+      let json = await response.json();
+      if (response.status === 200) {
+        submitBtn.classList.remove("bg-brand_gray_light");
+        submitBtn.classList.add("bg-green-400");
+        submitBtn.innerText = "Joined";
+        setTimeout(() => {
+          submitBtn.classList.remove("bg-green-400");
+          submitBtn.innerText = "Join";
+        }, 2000);
+      }
+      else {
+        submitBtn.classList.remove("bg-brand_gray_light");
+        result.innerText = "Please try again later."
+      }
+    }).catch((err) => {
+      form.reset();
+      result.innerText = "Please try again later."
+    }).finally(() => {
+      form.reset();
+      setTimeout(() => {
+        result.innerText = "";
+      }, 2000);
+    });
+  });
+</script>

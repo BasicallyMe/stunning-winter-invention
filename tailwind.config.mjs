@@ -8,7 +8,7 @@ export default {
       colors: {
         brand_primary: "#3D52A0",
         brand_secondary: "#7091E6",
-        brand_accent: "#FF00FF",
+        brand_gray_light: "#ADBBDA",
         brand_white: "#EDE8F5"
       },
       animation: {
